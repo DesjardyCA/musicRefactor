@@ -30,6 +30,12 @@ var library = {
       name: "Other Playlist",
       tracks: ["t03"]
     }
+  },
+  printPlaylists: function () {
+    for (const passthrough in library.playlists) {
+      var list = library.playlists[passthrough];
+      console.log(list.id, ":", list.name, "-", list.tracks.length, "tracks");
+    }
   }
 }
 
@@ -39,14 +45,14 @@ var library = {
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
 
-var printPlaylists = function () {
-  for (const passthrough in library.playlists) {
-    var list = library.playlists[passthrough];
-    console.log(list.id, ":", list.name, "-", list.tracks.length, "tracks");
-  }
-}
+// var printPlaylists = function () {
+//   for (const passthrough in library.playlists) {
+//     var list = library.playlists[passthrough];
+//     console.log(list.id, ":", list.name, "-", list.tracks.length, "tracks");
+//   }
+// }
 
-// printPlaylists();
+library.printPlaylists();
 
 
 // prints a list of all tracks, in the form:
@@ -136,7 +142,7 @@ var addPlaylist = function (name) {
   console.log(list[newID]);
 }
 
-addPlaylist('woop');
+// addPlaylist('woop');
 
 // STRETCH:
 // given a query string string, prints a list of tracks

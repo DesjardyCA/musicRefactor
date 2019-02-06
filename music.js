@@ -32,29 +32,29 @@ var library = {
     }
   },
   printPlaylists: function () {
-    for (const passthrough in library.playlists) {
-      var list = library.playlists[passthrough];
+    for (const passthrough in this.playlists) {
+      var list = this.playlists[passthrough];
       console.log(list.id, ":", list.name, "-", list.tracks.length, "tracks");
     }
   },
   printTracks: function () {
-    for (const passthrough in library.tracks) {
-      var track = library.tracks[passthrough];
+    for (const passthrough in this.tracks) {
+      var track = this.tracks[passthrough];
 
       console.log(track.id, ":", track.name, "by", track.artist, "(", track.album, ")");
     }
   },
   printPlaylist: function (playlistId) {
-    var list = library.playlists[playlistId];
+    var list = this.playlists[playlistId];
     console.log(list.id, ":", list.name, "-", list.tracks.length, "tracks");
     for (const passthrough in list.tracks) {
-      var track = library.tracks[list.tracks[passthrough]];
+      var track = this.tracks[list.tracks[passthrough]];
 
       console.log(track.id, ":", track.name, "by", track.artist, "(", track.album, ")");
     }
   },
   addTrackToPlaylist: function (trackId, playlistId) {
-    var list = library.playlists[playlistId];
+    var list = this.playlists[playlistId];
 
     list.tracks.push(trackId);
   },
@@ -62,8 +62,8 @@ var library = {
     return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
   },
   addTrack: function (name, artist, album) {
-    var track = library.tracks;
-    var newID = "t" + uid();
+    var track = this.tracks;
+    var newID = "t" + this.uid();
 
     track[newID] = {
       id: newID,
@@ -75,8 +75,8 @@ var library = {
     console.log(track[newID]);
   },
   addPlaylist: function (name) {
-    var list = library.tracks;
-    var newID = "p" + uid();
+    var list = this.tracks;
+    var newID = "p" + this.uid();
 
     list[newID] = {
       id: newID,

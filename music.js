@@ -52,24 +52,23 @@ var library = {
 
       console.log(track.id, ":", track.name, "by", track.artist, "(", track.album, ")");
     }
+  },
+  addTrackToPlaylist: function (trackId, playlistId) {
+    var list = library.playlists[playlistId];
+
+    list.tracks.push(trackId);
   }
 }
 
 // library.printPlaylists();
+
 // library.printTracks();
+
 // library.printPlaylist("p01");
 
-// adds an existing track to an existing playlist
-
-var addTrackToPlaylist = function (trackId, playlistId) {
-  var list = library.playlists[playlistId];
-
-  list.tracks.push(trackId);
-}
-
-// printPlaylist("p01");
-// addTrackToPlaylist('t03', 'p01');
-// printPlaylist("p01");
+library.printPlaylist("p01");
+library.addTrackToPlaylist('t03', 'p01');
+library.printPlaylist("p01");
 
 // generates a unique id
 // (use this for addTrack and addPlaylist) 

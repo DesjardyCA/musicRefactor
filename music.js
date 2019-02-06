@@ -57,6 +57,34 @@ var library = {
     var list = library.playlists[playlistId];
 
     list.tracks.push(trackId);
+  },
+  uid: function () {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  },
+  addTrack: function (name, artist, album) {
+    var track = library.tracks;
+    var newID = "t" + uid();
+
+    track[newID] = {
+      id: newID,
+      name: name,
+      artist: artist,
+      album: album
+    };
+
+    console.log(track[newID]);
+  },
+  addPlaylist: function (name) {
+    var list = library.tracks;
+    var newID = "p" + uid();
+
+    list[newID] = {
+      id: newID,
+      name: name,
+      track: "t01"
+    };
+
+    console.log(list[newID]);
   }
 }
 
@@ -66,53 +94,13 @@ var library = {
 
 // library.printPlaylist("p01");
 
-library.printPlaylist("p01");
-library.addTrackToPlaylist('t03', 'p01');
-library.printPlaylist("p01");
+// library.printPlaylist("p01");
+// library.addTrackToPlaylist('t03', 'p01');
+// library.printPlaylist("p01");
 
-// generates a unique id
-// (use this for addTrack and addPlaylist) 
+// library.addTrack('west', 'kanye', 'dunno');
 
-var uid = function () {
-  return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
-
-
-// adds a track to the library
-
-var addTrack = function (name, artist, album) {
-  var track = library.tracks;
-  var newID = "t" + uid();
-
-  track[newID] = {
-    id: newID,
-    name: name,
-    artist: artist,
-    album: album
-  };
-
-  console.log(track[newID]);
-}
-
-// addTrack('west', 'kanye', 'dunno');
-
-
-// adds a playlist to the library
-
-var addPlaylist = function (name) {
-  var list = library.tracks;
-  var newID = "p" + uid();
-
-  list[newID] = {
-    id: newID,
-    name: name,
-    track: "t01"
-  };
-
-  console.log(list[newID]);
-}
-
-// addPlaylist('woop');
+// library.addPlaylist('woop');
 
 // STRETCH:
 // given a query string string, prints a list of tracks
